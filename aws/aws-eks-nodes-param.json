@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "ClusterName",
+        "ParameterValue": "eks-cluster"
+    },
+    {
+        "ParameterKey": "NodeImageId",
+        "ParameterValue": "ami-0812df1ae4450c89a"
+    },
+    {
+        "ParameterKey": "NodeGroupName",
+        "ParameterValue": "eks-node-group"
+    },
+    {
+        "ParameterKey": "KeyName",
+        "ParameterValue": "keypair"
+    },
+    {
+        "ParameterKey": "NodeGroupName",
+        "ParameterValue": "eks-nodes-group"
+    }
+]
