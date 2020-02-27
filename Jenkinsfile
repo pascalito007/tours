@@ -3,13 +3,15 @@ pipeline{
     stages{
         stage("checkout"){
             steps{
-            deletedir()
-            checkout scm
+                deletedir()
+                checkout scm
             }
         }
         stage("unit test"){
             steps{
-            sh "mvn clean install -Dmaven.test.skip=false"
+                scrip{
+                    sh "mvn clean install -Dmaven.test.skip=false"
+                }
             }
         }
     }
