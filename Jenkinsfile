@@ -1,19 +1,29 @@
 pipeline{
     agent any
     stages{
-        stage('checkout'){
+        stage("checkout"){
             steps{
                 deleteDir()
                 checkout scm
             }
         }
-        stage('unit test'){
+        stage("unit test"){
             steps{
-                echo "========always========"
-                // scrip{
-                //     sh "mvn clean install -Dmaven.test.skip=false"
-                // }
+                scrip{
+                    sh "mvn clean install -Dmaven.test.skip=false"
+                }
             }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
