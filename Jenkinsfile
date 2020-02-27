@@ -2,11 +2,15 @@ pipeline{
     agent any
     stages{
         stage("checkout"){
+            steps{
             deletedir()
             checkout scm
+            }
         }
         stage("unit test"){
+            steps{
             sh "mvn clean install -Dmaven.test.skip=false"
+            }
         }
     }
     post{
