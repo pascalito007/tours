@@ -1,23 +1,12 @@
 pipeline{
-    agent{
-        label "node"
-    }
+    agent any
     stages{
-        stage("A"){
-            steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+        stage("checkout"){
+            deletedir()
+            checkout scm
+        }
+        stage("unit test"){
+            sh "mvn clean install -Dmaven.test.skip=false"
         }
     }
     post{
