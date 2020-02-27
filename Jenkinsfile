@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    tools {
+		maven 'Maven3'
+		jdk 'JDK8'
+	}
     stages{
         stage("checkout"){
             steps{
@@ -13,17 +17,6 @@ pipeline{
                     sh "mvn clean install -Dmaven.test.skip=false"
                 }
             }
-        }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
