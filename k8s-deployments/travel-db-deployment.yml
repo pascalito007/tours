@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
+  name: appdb
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: db
+      appdb: db
   template:
     metadata:
       labels:
-        app: db
+        appdb: db
     spec:
       containers:
       - name: ctn-travel-db
@@ -27,8 +27,9 @@ metadata:
   name: dbsvc
 spec:
   selector:
-    app: db
-  type: ClusterIP
+    appdb: db
+  type: NodePort
   ports:
     - port: 5432
       targetPort: 5432
+      nodePort: 30000

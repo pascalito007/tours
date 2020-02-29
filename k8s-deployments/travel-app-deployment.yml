@@ -15,11 +15,20 @@ spec:
       containers:
       - name: ctn-travel-app
         image: 828370275182.dkr.ecr.eu-west-3.amazonaws.com/travel:1.0
+        args: ["--spring.profiles.active=postgresql"]
         ports:
         - containerPort: 8080
         env:
-        - name: JAVA_OPTIONS
-          value: -Dspring.profiles.active=postgresql
+        # - name: JAVA_OPTIONS
+        #   value: -Dspring.profiles.active=postgresqlg
+        - name: POSTGRES_DB
+          value: travel
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: admin
+        - name: DB_SVC
+          value: dbsvc
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +39,5 @@ spec:
     app: web
   type: LoadBalancer
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
