@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: db
+data:
+  POSTGRES_DB: travel
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: admin
+  DB_SVC: dbsvc
+

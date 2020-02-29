@@ -1,5 +1,5 @@
 Description: >
-  Essodina Jean-Pascal MEWENEMESSE / AWS EKS VPC and Cluster for Capstone Project'
+  Essodina Jean-Pascal MEWENEMESSE / AWS EKS VPC and Cluster for Capstone Project
 
 Parameters:
   VpcCIDR:

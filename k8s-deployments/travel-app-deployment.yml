@@ -14,9 +14,12 @@ spec:
     spec:
       containers:
       - name: ctn-travel-app
-        image: travel:1.0
+        image: 828370275182.dkr.ecr.eu-west-3.amazonaws.com/travel:1.0
         ports:
-        - containersPort: 8080
+        - containerPort: 8080
+        env:
+        - name: JAVA_OPTIONS
+          value: -Dspring.profiles.active=postgresql
 ---
 apiVersion: v1
 kind: Service
@@ -30,4 +33,3 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 8080

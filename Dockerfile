@@ -1,20 +1,12 @@
-#FROM maven:3.6.3-jdk-8
+# Starting from java8 base image to build our own one
 FROM java:8
-MAINTAINER pasciano007@gmail.com
-
+# The owner of the image
+LABEL MAINTAINER pasciano007@gmail.com
 # Set the working directory to /travel
 WORKDIR /travel
-
+# copy packaged application to current working directory
 ADD target/travel-0.0.1-SNAPSHOT.jar .
-# Update and install packages
-#RUN apt-get update
-#RUN apt-get -y install vim apt-utils git
-
-# Clone the project
-#RUN git clone https://github.com/pascalito007/travel.git .
-# Build the travel-app project
-#RUN mvn initialize; mvn clean install
-
-#WORKDIR /travel/target
+# The container expose port 8080 internaly
 EXPOSE 8080
+# Run the application using postgresql profile
 ENTRYPOINT ["java", "-jar", "travel-0.0.1-SNAPSHOT.jar"]

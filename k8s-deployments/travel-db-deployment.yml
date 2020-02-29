@@ -16,7 +16,10 @@ spec:
       - name: ctn-travel-db
         image: postgres:latest
         ports:
-        - containersPort: 5432
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: postgres-config
 ---
 apiVersion: v1
 kind: Service
