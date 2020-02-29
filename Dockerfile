@@ -1,7 +1,7 @@
 # Starting from java8 base image to build our own one
 FROM java:8
 # The owner of the image
-LABEL MAINTAINER pasciano007@gmail.com
+LABEL MAINTAINER=pasciano007@gmail.com
 # Set the working directory to /travel
 WORKDIR /travel
 # copy packaged application to current working directory
