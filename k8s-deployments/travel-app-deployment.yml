@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: app
 spec:
   replicas: 3
   selector:
@@ -13,14 +13,16 @@ spec:
         app: web
     spec:
       containers:
-      - name: ctn-travel-app
+      - name: ctn-app
         image: 828370275182.dkr.ecr.eu-west-3.amazonaws.com/travel:1.0
-        args: ["--spring.profiles.active=postgresql"]
         ports:
         - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: postgres-config
         env:
-        # - name: JAVA_OPTIONS
-        #   value: -Dspring.profiles.active=postgresqlg
+        - name: spring.profiles.active
+          value: postgresql
         - name: POSTGRES_DB
           value: travel
         - name: POSTGRES_USER
@@ -39,5 +41,6 @@ spec:
     app: web
   type: LoadBalancer
   ports:
-    - port: 8080
+    - name: web
+      port: 8080
       targetPort: 8080

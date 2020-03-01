@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appdb
+  name: db
 spec:
   replicas: 3
   selector:
     matchLabels:
-      appdb: db
+      app: db
   template:
     metadata:
       labels:
-        appdb: db
+        app: db
     spec:
       containers:
       - name: ctn-travel-db
@@ -27,7 +27,7 @@ metadata:
   name: dbsvc
 spec:
   selector:
-    appdb: db
+    app: db
   type: NodePort
   ports:
     - port: 5432
