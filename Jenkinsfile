@@ -14,7 +14,7 @@ pipeline{
         }
         stage('run unit test'){
             steps{
-                sh "mvn clean install -Dmaven.test.skip=false"
+                sh "mvn clean install -Dmaven.test.skip=true"
 
             }
         }
