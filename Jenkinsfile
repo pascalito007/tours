@@ -22,7 +22,7 @@ pipeline{
             steps{
                 script{
                         docker.build('travel')
-                        docker.withRegistry('https://828370275182.dkr.ecr.eu-west-3.amazonaws.com', 'ecr:eu-west-3:828370275182') {
+                        docker.withRegistry('https://828370275182.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:828370275182') {
                         docker.image('travel').push('1.0')
                     }
                 }
