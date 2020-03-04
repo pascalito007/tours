@@ -34,18 +34,22 @@ pipeline{
                     script{
                         "export AWS_PROFILE=clusterAdmin"
                         "aws eks update-kubeconfig --name eks-cluster"
-
+                        "kubectl apply -f ./k8s-deployments/tours-web-and-db-cm.yml"
+                        "kubectl apply -f ./k8s-deployments/tours-db-deployment.yml"
                     }
                 }
-                sh "kubectl apply -f ./k8s-deployments/tours-web-and-db-cm.yml"
-                sh "kubectl apply -f ./k8s-deployments/tours-db-deployment.yml"
+                
                 
             }
         }
         stage('deploy front app'){
             steps{
-                script{
-                    "kubectl apply -f ./k8s-deployments/tours-app-deployment.yml"
+                withAWS(region:'us-west-2',credentials:'828370275182') {
+                    script{
+                        "kubectl apply -f ./k8s-deployments/tours-app-deployment.yml"
+                        "kubectl get no -o wide"
+                        "kubectl get all -o wide"
+                    }
                 }
             }
         }
@@ -53,8 +57,6 @@ pipeline{
     post{
         success{
             echo "====++++Successfully deployed++++===="
-            sh "kubectl get no -o wide"
-            sh "kubectl get all -o wide"
         }
     }
 }
