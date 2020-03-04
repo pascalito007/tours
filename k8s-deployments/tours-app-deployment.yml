@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ctn-app
-        image: 828370275182.dkr.ecr.us-west-2.amazonaws.com/tours:1.0
+        image: 828370275182.dkr.ecr.us-west-2.amazonaws.com/tours:2.0
         ports:
         - containerPort: 8080
         envFrom:

@@ -24,6 +24,9 @@ VPC
 To be able to work with your cluster you will need to install Kubectl
 [Following this guide](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) .
 After installing Kubectl, run `Kubectl version` to show your installed version
+Update your cluster config by runing below command
+
+`aws eks update-kubeconfig --name eks-cluster`
 ## Apply The arn role
 Replace `arn:aws:iam::828370275182:role/aws-eks-nodes-NodeInstanceRole-143AZV3JNWBLF` in `aws-auth-cm.yaml` with yours
 to apply be able to work with your nodes.

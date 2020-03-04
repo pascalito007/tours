@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.udacity.capstone</groupId>
 	<artifactId>tours</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>tours</name>
 	<description>Udacity Cloud DevOps Engineer Nanodegree program</description>
 
