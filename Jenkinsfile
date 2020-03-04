@@ -28,28 +28,25 @@ pipeline{
                 }
             }
         }
+
         stage('deploy database'){
             steps{
                 withAWS(region:'us-west-2',credentials:'828370275182') {
-                    script{
-                        "export AWS_PROFILE=clusterAdmin"
-                        "aws eks update-kubeconfig --name eks-cluster"
-                        "kubectl apply -f ./k8s-deployments/tours-web-and-db-cm.yml"
-                        "kubectl apply -f ./k8s-deployments/tours-db-deployment.yml"
-                    }
+                        sh "aws eks --region us-west-2 update-kubeconfig --name eks-cluster"
+                        sh "kubectl apply -f ./aws/aws-auth-cm.yaml"
+                        sh "kubectl apply -f ./k8s-deployments/tours-web-and-db-cm.yaml"
+                        sh "kubectl apply -f ./k8s-deployments/tours-db-deployment.yml"
                 }
-                
-                
+
+
             }
         }
         stage('deploy front app'){
             steps{
                 withAWS(region:'us-west-2',credentials:'828370275182') {
-                    script{
-                        "kubectl apply -f ./k8s-deployments/tours-app-deployment.yml"
-                        "kubectl get no -o wide"
-                        "kubectl get all -o wide"
-                    }
+                        sh "kubectl apply -f ./k8s-deployments/tours-app-deployment.yml"
+                        sh "kubectl get no -o wide"
+                        sh "kubectl get all -o wide"
                 }
             }
         }

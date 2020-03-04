@@ -5,8 +5,9 @@ LABEL MAINTAINER=pasciano007@gmail.com
 # Set the working directory to /tours
 WORKDIR /tours
 # copy packaged application to current working directory
-ADD target/tours-0.0.2-SNAPSHOT.jar .
+
+COPY target/*.jar app.jar
 # The container expose port 8080 internaly
 EXPOSE 8080
 # Run the application using postgresql profile
-ENTRYPOINT ["java", "-jar", "tours-0.0.2-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -343,7 +343,7 @@ Resources:
       Tags:
         - Key: !Sub kubernetes.io/cluster/${ClusterName}
           Value: owned
-      VpcId: 
+      VpcId:
         Fn::ImportValue: VpcId
 
   NodeSecurityGroupIngress:
@@ -362,12 +362,12 @@ Resources:
     DependsOn: NodeSecurityGroup
     Properties:
       Description: Allow pods to communicate with the cluster API Server
-      FromPort: 443
+      FromPort: 0
       GroupId:
         Fn::ImportValue: SecurityGroups
-      IpProtocol: tcp
-      SourceSecurityGroupId: !Ref NodeSecurityGroup
-      ToPort: 443
+      IpProtocol: "-1"
+      ToPort: 65535
+      CidrIp: 0.0.0.0/0
 
   ControlPlaneEgressToNodeSecurityGroup:
     Type: "AWS::EC2::SecurityGroupEgress"
@@ -401,9 +401,8 @@ Resources:
       FromPort: 1025
       GroupId: !Ref NodeSecurityGroup
       IpProtocol: tcp
-      SourceSecurityGroupId:
-        Fn::ImportValue: SecurityGroups
       ToPort: 65535
+      CidrIp: 0.0.0.0/0
 
   NodeSecurityGroupFromControlPlaneOn443Ingress:
     Type: "AWS::EC2::SecurityGroupIngress"

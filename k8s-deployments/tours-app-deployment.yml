@@ -20,6 +20,9 @@ spec:
         envFrom:
           - configMapRef:
               name: postgres-config
+        env:
+          - name: spring.profiles.active
+            value: postgresql
 ---
 apiVersion: v1
 kind: Service
