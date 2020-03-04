@@ -1,4 +1,4 @@
-package com.udacity.capstone.travel;
+package com.udacity.capstone.tours;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

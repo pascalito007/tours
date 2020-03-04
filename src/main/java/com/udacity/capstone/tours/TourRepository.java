@@ -1,4 +1,4 @@
-package com.udacity.capstone.travel;
+package com.udacity.capstone.tours;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

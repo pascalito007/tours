@@ -1,4 +1,4 @@
-package com.udacity.capstone.travel;
+package com.udacity.capstone.tours;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

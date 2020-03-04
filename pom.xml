@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.udacity.capstone</groupId>
-	<artifactId>travel</artifactId>
+	<artifactId>tours</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>travel</name>
+	<name>tours</name>
 	<description>Udacity Cloud DevOps Engineer Nanodegree program</description>
 
 	<properties>

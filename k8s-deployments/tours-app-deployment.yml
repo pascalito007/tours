@@ -14,23 +14,12 @@ spec:
     spec:
       containers:
       - name: ctn-app
-        image: 828370275182.dkr.ecr.us-west-2.amazonaws.com/travel:1.0
+        image: 828370275182.dkr.ecr.us-west-2.amazonaws.com/tours:1.0
         ports:
         - containerPort: 8080
         envFrom:
           - configMapRef:
               name: postgres-config
-        env:
-        - name: spring.profiles.active
-          value: postgresql
-        - name: POSTGRES_DB
-          value: travel
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
-          value: admin
-        - name: DB_SVC
-          value: dbsvc
 ---
 apiVersion: v1
 kind: Service

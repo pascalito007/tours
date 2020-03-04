@@ -13,7 +13,7 @@ spec:
         app: db
     spec:
       containers:
-      - name: ctn-travel-db
+      - name: ctn-tours-db
         image: postgres:latest
         ports:
         - containerPort: 5432

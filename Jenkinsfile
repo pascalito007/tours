@@ -14,16 +14,16 @@ pipeline{
         }
         stage('run unit test'){
             steps{
-                sh "mvn clean install -Dmaven.test.skip=true"
+                sh "mvn clean install -Dmaven.test.skip=false"
 
             }
         }
         stage('build dockerfile and push to ecr'){
             steps{
                 script{
-                        docker.build('travel')
+                        docker.build('tours')
                         docker.withRegistry('https://828370275182.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:828370275182') {
-                        docker.image('travel').push('1.0')
+                        docker.image('tours').push('1.0')
                     }
                 }
             }
